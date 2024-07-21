@@ -33,7 +33,6 @@ function App() {
 
   const handleAddNewTask = () => {
     setTasks([...Tasks, { title: '', description: '', status: 'New' }]);
-    console.log(Tasks);
   };
 
   const [Tasks, setTasks] = useState([])
