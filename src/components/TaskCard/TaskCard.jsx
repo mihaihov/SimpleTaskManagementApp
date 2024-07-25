@@ -24,6 +24,8 @@ const TaskCard = (taskEntity) => {
             'Content-Type': 'application/json'
           }
         });
+
+        setGuid(response.data.id);
         console.log("Successfully saved!");
       }
       catch(error) {
