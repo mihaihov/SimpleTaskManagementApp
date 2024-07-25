@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const axiosInstance = axios.crete({
+const axiosInstance = axios.create({
     baseURL: 'https://localhost:7028/',
 })
 

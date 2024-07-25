@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
+import axiosInstance from '../../services/axiosConfig';
 
 
 const TaskCard = (taskEntity) => {
 
   const handleSaveButton = async () => {
-    var apiUrl = 'https://localhost:7028/task/';
+    var apiUrl = 'task/';
     const data = {
       title: title,
       description: description,
@@ -19,7 +20,7 @@ const TaskCard = (taskEntity) => {
       try
       {
         apiUrl = apiUrl + 'savenewtask';
-        const response = await axios.post(apiUrl,data, {
+        const response = await axiosInstance.post(apiUrl,data, {
           headers: {
             'Content-Type': 'application/json'
           }
