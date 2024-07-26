@@ -11,6 +11,7 @@ const TaskCard = (taskEntity) => {
     const data = {
       title: title,
       description: description,
+      userid: localStorage.getItem("userId"),
       status: status
     }
 
@@ -38,7 +39,7 @@ const TaskCard = (taskEntity) => {
       try {
         apiUrl += 'updatetask'
         data.id = guid;
-        const response = await axios.put(apiUrl, data, {
+        const response = await axiosInstance.put(apiUrl, data, {
           headers: {
             'Content-Type' : 'application/json'
           }

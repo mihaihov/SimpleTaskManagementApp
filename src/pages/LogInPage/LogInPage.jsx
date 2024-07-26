@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../services/axiosConfig';
 
 const LogInPage = () => {
 
@@ -21,6 +22,16 @@ const LogInPage = () => {
             const response = await axios.post('https://localhost:7028/login', data);
 
             localStorage.setItem('token', response.data.accessToken)
+
+            const userResponse = await axiosInstance.post('user/getuserbyemail', username, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            localStorage.setItem('userId', userResponse.data.id)
+            localStorage.setItem('email', username);
+
             navigate('/mainpage');
         } catch (error) {
             alert (error);

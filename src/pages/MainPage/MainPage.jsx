@@ -8,14 +8,15 @@ const MainPage = () => {
   var navigate = useNavigate();
 
   const getTasks = async () => {
-    var apiUrl = 'task/getalltasks'
+    var apiUrl = 'task/getalltasksbyuserid'
     try {
-      const response = await axiosInstance.get(apiUrl, {
+      const response = await axiosInstance.post(apiUrl, localStorage.getItem('userId').toString(), {
         headers : {
           "Content-Type" : 'application/json'
         }
       });
 
+      console.log(response.data);
       return response.data;
     }
     catch (error)
